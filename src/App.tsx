@@ -1,26 +1,26 @@
-import { useState, useEffect } from 'react';
+import * as React from 'react';
 import * as C from './App.styles';
 import { categories } from './data/categories';
 import { items } from './data/items';
 import { Item } from './types/Item';
-import { Category } from './types/Category';
 import { filterListByMonth, getCurrentMonth } from './helpers/dateFilter';
 import { TableArea } from './components/TableArea';
 import { InfoArea } from './components/InfoArea';
+import InsertItem from './components/InsertItem';
 
 const App = () => {
  /*  const [list, setList] = useState(items); */
-  const [filteredList, setFilteredList] = useState<Item[]>([]);
-  const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
-  const [income, setIncome] = useState(0)
-  const [expense, setExpense] = useState(0)
+  const [filteredList, setFilteredList] = React.useState<Item[]>([]);
+  const [currentMonth, setCurrentMonth] = React.useState(getCurrentMonth());
+  const [income, setIncome] = React.useState(0)
+  const [expense, setExpense] = React.useState(0)
   const list = items;
 
-  useEffect(() => {
+  React.useEffect(() => {
     setFilteredList(filterListByMonth(list, currentMonth));
   },[list,currentMonth]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     let incomeCount = 0;
     let expenseCount = 0;
 
@@ -48,6 +48,8 @@ const App = () => {
       </C.Header>
       <C.Body>  
         
+        <InsertItem />
+
         <InfoArea 
           currentMonth={currentMonth}
           onMonthChange={handleMonthChange}

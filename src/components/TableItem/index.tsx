@@ -19,7 +19,7 @@ export const TableItem = ({ item }: Props) => {
                 </C.TableColumn>
                 <C.TableColumn>{item.title}</C.TableColumn>
                 <C.TableColumn>
-                    <C.Value expense={categories[item.category].expense ? 'red' : 'green'}>R$ {item.value}</C.Value>
+                    <C.Value expense={categories[item.category].expense ? 'red' : 'green'}>R$ {item.value.toFixed(2)}</C.Value>
                 </C.TableColumn>
             </C.TableLine>
     )
