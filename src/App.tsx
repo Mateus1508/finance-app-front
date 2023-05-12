@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as C from './App.styles';
 import { categories } from './data/categories';
-import { items } from './data/items';
 import { Item } from './types/Item';
 import { filterListByMonth, getCurrentMonth } from './helpers/dateFilter';
 import { TableArea } from './components/TableArea';
@@ -13,7 +12,7 @@ const App = () => {
   const [currentMonth, setCurrentMonth] = React.useState(getCurrentMonth());
   const [income, setIncome] = React.useState(0);
   const [expense, setExpense] = React.useState(0);
-  const [list, setList] = React.useState(items);
+  const [list, setList] = React.useState<Item[]>([]);
   
 
   React.useEffect(() => {
