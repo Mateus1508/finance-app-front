@@ -9,12 +9,12 @@ import { InfoArea } from './components/InfoArea';
 import InsertItem from './components/InsertItem';
 
 const App = () => {
- /*  const [list, setList] = useState(items); */
   const [filteredList, setFilteredList] = React.useState<Item[]>([]);
   const [currentMonth, setCurrentMonth] = React.useState(getCurrentMonth());
-  const [income, setIncome] = React.useState(0)
-  const [expense, setExpense] = React.useState(0)
-  const list = items;
+  const [income, setIncome] = React.useState(0);
+  const [expense, setExpense] = React.useState(0);
+  const [list, setList] = React.useState(items);
+  
 
   React.useEffect(() => {
     setFilteredList(filterListByMonth(list, currentMonth));
@@ -41,6 +41,12 @@ const App = () => {
     setCurrentMonth(newMonth);
   }
 
+  const handleAddItem = (item: Item) => {
+    let newList = [...list];
+    newList.push(item);
+    setList(newList);
+  }
+
   return (
     <C.Container>
       <C.Header>
@@ -48,7 +54,7 @@ const App = () => {
       </C.Header>
       <C.Body>  
         
-        <InsertItem />
+        <InsertItem addItem={handleAddItem}/>
 
         <InfoArea 
           currentMonth={currentMonth}
