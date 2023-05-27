@@ -1,32 +1,38 @@
 import React from 'react';
 import * as C from './styles';
-import { Item } from '../../types/Item';
-import { newDateAdjusted } from '../../helpers/dateFilter';
+import axios from 'axios';
+import { baseUrl } from '../../services/api';
+import { Category } from '../../types/Category';
 
 type Props = {
-    addItem: (item: Item) => void;
+  categoriesList: Category[];
 }
 
-const InsertItem = ({ addItem }: Props) => {
+const InsertItem = ({categoriesList}: Props) => {
     const [title, setTitle] = React.useState('');
     const [category, setCategory] = React.useState('');
     const [value, setValue] = React.useState(0);
     const [date, setDate] = React.useState('');
     
-    const handleAddItem = () => {
-        addItem({
-            date: newDateAdjusted(date),
-            title: title,
-            category: category,
-            value: value,
-        });
-        setTitle('');
-        setCategory('');
-        setValue(0);
+    const handleAddItem = async () => {
+      await axios
+      .post(`${baseUrl}/item`, {
+        "title": title,
+        "value": value,
+        "date": date,
+        "categoryId": category,
+      })
+      .then(function (response) {
+        window.alert(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     };
 
     return (
       <C.Container>
+        <h2>Adicionar item</h2>
         <input
           type="date"
           value={date}
@@ -42,9 +48,13 @@ const InsertItem = ({ addItem }: Props) => {
   
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Selecione</option>
-          <option value="food">Alimentação</option>
-          <option value="rent">Aluguel</option>
-          <option value="salary">Salário</option>
+          {
+            categoriesList.map((item) => {
+              return (
+                <option key={item.id} value={item.id}>{item.title}</option>
+              )
+            })
+          }
         </select>
   
         <input type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
