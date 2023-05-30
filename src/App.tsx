@@ -8,6 +8,7 @@ import InsertItem from './components/InsertItem';
 import { baseUrl } from './services/api';
 import { Category } from './types/Category';
 import axios from 'axios';
+import InsertCategory from './components/InsetCategory';
 
 const App = () => {
   const [filteredList, setFilteredList] = React.useState<Item[]>([]);
@@ -29,7 +30,7 @@ const App = () => {
     .catch((err: string) => {
       console.error("ops! ocorreu um erro" + err);
       });
-    }, []);
+    }, [listItem, categories]);
   React.useEffect(() => {
     setFilteredList(filterListByMonth(listItem, currentMonth));
   },[listItem,currentMonth]);
@@ -59,6 +60,7 @@ const App = () => {
         <C.HeaderText>Sistema Financeiro</C.HeaderText>
       </C.Header>
       <C.Body> 
+        <InsertCategory />
         <InsertItem categoriesList={categories} />
         <C.Table>
           <InfoArea 
