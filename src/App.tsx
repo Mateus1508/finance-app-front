@@ -39,11 +39,11 @@ const App = () => {
     let expenseCount = 0;
 
     for(let i in filteredList) {
-      if(!categories[i].expense) {
-        expenseCount += filteredList[i].value;
+      if(categories[i]?.expense) {
+        incomeCount += filteredList[i].value;
       }
       else {
-        incomeCount += filteredList[i].value;
+        expenseCount += filteredList[i].value;
       }
     }
     
@@ -60,8 +60,10 @@ const App = () => {
         <C.HeaderText>Sistema Financeiro</C.HeaderText>
       </C.Header>
       <C.Body> 
-        <InsertCategory />
-        <InsertItem categoriesList={categories} />
+        <C.InsertBox>
+          <InsertCategory />
+          <InsertItem categoriesList={categories} />
+        </C.InsertBox>
         <C.Table>
           <InfoArea 
             currentMonth={currentMonth}

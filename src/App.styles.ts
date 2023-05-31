@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100vw;
 `;
 
 export const Header = styled.div`
@@ -19,13 +20,20 @@ export const HeaderText = styled.h1`
 
 export const Body = styled.div`
     display: flex;
-    margin: auto;
-    max-width: 980px;
-    margin-bottom: 50px;
+    margin: 15px 30px;
+    gap: 20px;
+`;
+
+export const InsertBox = styled.div`
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: max-content;
 `;
 
 export const Table = styled.div`
     display: flex;
+    flex: 1;
     flex-direction: column;
 `;
 

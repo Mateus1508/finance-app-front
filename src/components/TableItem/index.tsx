@@ -16,13 +16,13 @@ export const TableItem = ({ item, categories }: Props) => {
         <C.TableLine>
             <C.TableColumn>{formatDate(item.date)}</C.TableColumn>
             <C.TableColumn>
-                <C.Category color={newCategoriesList[0].color}>
-                    {newCategoriesList[0].title}
+                <C.Category color={newCategoriesList[0]?.color}>
+                    {newCategoriesList[0]?.title}
                 </C.Category>
             </C.TableColumn>
             <C.TableColumn>{item.title}</C.TableColumn>
             <C.TableColumn>
-                <C.Value expense={newCategoriesList[0].expense ? 'red' : 'green'}>
+                <C.Value expense={newCategoriesList[0]?.expense ? 'red' : 'green'}>
                     R$ {item.value.toFixed(2)}
                 </C.Value>
             </C.TableColumn>

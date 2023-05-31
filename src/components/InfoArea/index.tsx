@@ -1,6 +1,7 @@
 import { formatCurrentMonth } from '../../helpers/dateFilter';
 import { ResumeItem } from '../ResumeItem';
 import * as C from './styles';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 
 type Props = {
     currentMonth: string;
@@ -28,9 +29,9 @@ export const InfoArea = ({currentMonth, onMonthChange, income, expense}: Props) 
     return(
         <C.Container>
             <C.MonthArea>
-                <C.MonthArrow onClick={handlePrevMonth}>anterior</C.MonthArrow>
+                <C.MonthArrow onClick={handlePrevMonth}><MdNavigateBefore className='month-icon' size={32} /></C.MonthArrow>
                 <C.MonthTitle>{formatCurrentMonth(currentMonth)}</C.MonthTitle>
-                <C.MonthArrow onClick={handleNextMonth}>posterior</C.MonthArrow>   
+                <C.MonthArrow onClick={handleNextMonth}><MdNavigateNext className='month-icon' size={32} /></C.MonthArrow>   
             </C.MonthArea>
             <C.ResumeArea>
                 <ResumeItem 

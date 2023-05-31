@@ -33,31 +33,43 @@ const InsertItem = ({categoriesList}: Props) => {
     return (
       <C.Container>
         <h2>Adicionar item</h2>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
+        
        
-        <input
-          type="text"
-          placeholder="Ex: Salário"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <C.InputBox>
+          <label htmlFor="">Título</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </C.InputBox>
+
+        <C.InputBox>
+          <label htmlFor="">Selecione a data</label>
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            />
+        </C.InputBox>
   
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="">Selecione</option>
-          {
-            categoriesList.map((item) => {
-              return (
-                <option key={item.id} value={item.id}>{item.title}</option>
-              )
-            })
-          }
-        </select>
+        <C.InputBox>
+          <label htmlFor="">Categoria</label>
+          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+            {
+              categoriesList.map((item) => {
+                return (
+                  <option key={item.id} value={item.id}>{item.title}</option>
+                )
+              })
+            }
+          </select>
+        </C.InputBox>
   
-        <input type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
+        <C.InputBox>
+          <label htmlFor="">Valor</label>
+          <input type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
+        </C.InputBox>
   
         <button onClick={handleAddItem}>Adicionar</button>
       </C.Container>

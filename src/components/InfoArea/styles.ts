@@ -19,19 +19,28 @@ export const MonthArea = styled.div`
 
 export const MonthArrow = styled.div`
     display: flex;
-    width: 70px;
+    width: max-content;
     border-radius: 5px;
     justify-content: center;
     transition: 0.5s ease-in-out;
+    background-color: #006d77;
     cursor: pointer;
     &:hover {
         background-color: #dddddd;
     }
+    .month-icon {
+        color: #ffffff;
+        &:hover {
+            color: #006d77;
+        }
+    }
 `;
+
 
 export const MonthTitle = styled.div`
     display: flex;
-    flex: 1;
+    padding: 0 20px;
+    width: max-content;
     justify-content: center;
 `;
 
