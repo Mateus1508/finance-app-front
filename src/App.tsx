@@ -4,10 +4,10 @@ import { Item } from './types/Item';
 import { filterListByMonth, getCurrentMonth } from './helpers/dateFilter';
 import { TableArea } from './components/TableArea';
 import { InfoArea } from './components/InfoArea';
-import InsertItem from './components/InsertItem';
 import { baseUrl } from './services/api';
 import { Category } from './types/Category';
 import axios from 'axios';
+import InsertItem from './components/InsertItem';
 import InsertCategory from './components/InsetCategory';
 
 const App = () => {

@@ -2,13 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
-    padding: 5px 20px;
+    width: 100%;
+    padding: 10px 0;
     align-items: center;
-    margin: 20px 0;
     box-shadow: 0 0 5px #dddddd;
     background-color: #ffffff;
     border-radius: 10px;
-    `;
+    @media (max-width: 768px) {        
+        flex-direction: column;
+        gap: 20px;
+    }
+`;
 
 export const MonthArea = styled.div`
     display: flex;

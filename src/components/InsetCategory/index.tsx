@@ -32,8 +32,8 @@ const InsertCategory = () => {
         <h2>Adicionar categoria</h2>
 
         <C.InputBox>
-            <label htmlFor="">Título</label>
-            <input
+            <label>Título</label>
+            <C.Input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -41,7 +41,7 @@ const InsertCategory = () => {
         </C.InputBox>
   
         <C.InputBox>
-            <label htmlFor="">Cor</label>
+            <label>Cor</label>
             <input type="color"
                 value={color} 
                 onChange={(e) => setColor(e.target.value)} 
@@ -49,16 +49,17 @@ const InsertCategory = () => {
         </C.InputBox>
         
         <C.InputBox>
-            <label htmlFor="">{expense ? "É uma ": "Não é uma "}despesa 
+            <label> 
               <input type="checkbox" 
                   value={'true'} 
                   onChange={handleExpenseCheckbox}
                   checked={expense}
               />
+              {expense ? " É uma ": " Não é uma "}despesa
             </label>
         </C.InputBox>
 
-        <button onClick={handleAddCategory}>Adicionar</button>
+        <C.Button onClick={handleAddCategory}>Adicionar</C.Button>
       </C.Container>
     );
   };

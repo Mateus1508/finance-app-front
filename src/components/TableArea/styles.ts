@@ -12,9 +12,8 @@ export const Table = styled.table`
     }
 `;
 
-export const TableHeadColumn = styled.th<{width?: number}>`
+export const TableHeadColumn = styled.th<{width: number}>`
     padding: 10px 0;
     width: ${props => `${props.width}px` ? `${props.width}px` : 'auto'};
     text-align: left;
-
 `;

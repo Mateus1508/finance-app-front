@@ -33,11 +33,10 @@ const InsertItem = ({categoriesList}: Props) => {
     return (
       <C.Container>
         <h2>Adicionar item</h2>
-        
-       
+
         <C.InputBox>
           <label htmlFor="">Título</label>
-          <input
+          <C.Input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -45,8 +44,8 @@ const InsertItem = ({categoriesList}: Props) => {
         </C.InputBox>
 
         <C.InputBox>
-          <label htmlFor="">Selecione a data</label>
-          <input
+          <label htmlFor="">Data</label>
+          <C.Input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
@@ -55,7 +54,7 @@ const InsertItem = ({categoriesList}: Props) => {
   
         <C.InputBox>
           <label htmlFor="">Categoria</label>
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <C.Select value={category} onChange={(e) => setCategory(e.target.value)}>
             {
               categoriesList.map((item) => {
                 return (
@@ -63,15 +62,15 @@ const InsertItem = ({categoriesList}: Props) => {
                 )
               })
             }
-          </select>
+          </C.Select>
         </C.InputBox>
   
         <C.InputBox>
           <label htmlFor="">Valor</label>
-          <input type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
+          <C.Input type="number" value={value} onChange={(e) => setValue(Number(e.target.value))} />
         </C.InputBox>
   
-        <button onClick={handleAddItem}>Adicionar</button>
+        <C.Button onClick={handleAddItem}>Adicionar</C.Button>
       </C.Container>
     );
   };
