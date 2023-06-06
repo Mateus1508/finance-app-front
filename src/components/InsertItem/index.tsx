@@ -32,8 +32,6 @@ const InsertItem = ({categoriesList}: Props) => {
 
     return (
       <C.Container>
-        <h2>Adicionar item</h2>
-
         <C.InputBox>
           <label htmlFor="">Título</label>
           <C.Input

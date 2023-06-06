@@ -17,6 +17,7 @@ const App = () => {
   const [expense, setExpense] = React.useState(0);
   const [listItem, setListItem] = React.useState<Item[]>([]);
   const [categories, setCategories] = React.useState<Category[]>([]);
+  const [option, setOption] = React.useState(0);
   React.useEffect(() => {
     axios
     .get(`${baseUrl}/item`)
@@ -24,13 +25,16 @@ const App = () => {
     .catch((err: string) => {
       console.error("ops! ocorreu um erro" + err);
     });
+
     axios
     .get(`${baseUrl}/category`)
     .then((response: { data: React.SetStateAction<Category[]>; }) => setCategories(response.data))
     .catch((err: string) => {
       console.error("ops! ocorreu um erro" + err);
       });
+
     }, [listItem, categories]);
+
   React.useEffect(() => {
     setFilteredList(filterListByMonth(listItem, currentMonth));
   },[listItem,currentMonth]);
@@ -53,6 +57,14 @@ const App = () => {
   const handleMonthChange = (newMonth: string) => {
     setCurrentMonth(newMonth);
   }
+  const selectOptions = () => {
+    if (option == 1)
+      return <InsertItem categoriesList={categories} />;
+    else if (option == 2)
+      return <InsertCategory />;
+    else
+      return;
+  };
 
   return (
     <C.Container>
@@ -60,10 +72,17 @@ const App = () => {
         <C.HeaderText>Sistema Financeiro</C.HeaderText>
       </C.Header>
       <C.Body> 
-        <C.InsertBox>
-          <InsertCategory />
-          <InsertItem categoriesList={categories} />
-        </C.InsertBox>
+        <C.EditBox>
+          <C.SelectTitle>Editar tabela</C.SelectTitle>
+          <C.SelectOption onChange={e => setOption(Number(e.target.value))}>
+            <option value="0">Selecione uma opção</option>
+            <option value="1">Adicionar item</option>
+            <option value="2">Adicionar categoria</option>
+          </C.SelectOption>
+          {
+            option != 0 && selectOptions()
+          }
+        </C.EditBox>
         <C.Table>
           <InfoArea 
             currentMonth={currentMonth}

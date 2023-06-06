@@ -29,8 +29,6 @@ const InsertCategory = () => {
 
     return (
       <C.Container>
-        <h2>Adicionar categoria</h2>
-
         <C.InputBox>
             <label>Título</label>
             <C.Input

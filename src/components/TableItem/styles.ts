@@ -7,6 +7,15 @@ export const TableLine = styled.tr`
 export const TableColumn = styled.td`
     padding: 10px 0;
 `;
+export const TableColumnIcon = styled.td`
+    padding: 10px 0;
+    text-align: center;
+    cursor: pointer;
+    button {
+        border: none;
+        background-color: transparent;
+    }
+`;
 
 export const Category = styled.div<{color: string}>`
     display: flex;

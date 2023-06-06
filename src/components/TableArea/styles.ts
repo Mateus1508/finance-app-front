@@ -17,3 +17,10 @@ export const TableHeadColumn = styled.th<{width: number}>`
     width: ${props => `${props.width}px` ? `${props.width}px` : 'auto'};
     text-align: left;
 `;
+
+export const TableHeadColumnIcons = styled.th<{width: number}>`
+    padding: 10px 0;
+    width: ${props => `${props.width}px` ? `${props.width}px` : 'auto'};
+    text-align: center;
+    justify-self: center;
+`;
